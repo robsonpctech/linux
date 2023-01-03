@@ -45,7 +45,7 @@ Reinicie o NetworkManager para gerar um novo resolv.conf e assim gerenciar a res
 ```
 sudo systemctl restart network-manager
 ```
-### DHCP para IP Fixo
+### DHCP
 > Procedimento para 
 
 entre em cd /etc/network
@@ -73,4 +73,87 @@ e deixe somente esses arquivos abaixo, o que tiver a mais apague
 70-snap.firefox.rules
 70-snap.snapd.rules
 ```
+### IP Fixo
 
+**Primeiro passo**
+```
+cd /etc/netplan
+mv 00-installer-config.yaml 00-installer-config.yaml.old
+nano rede_local.yaml
+```
+coloque o conteudo abaixo, alterado o ip, macadress e nome da placa de rede dentro do arquivo rede_local.yaml
+```
+/*This is the network config written by 'subiquity': */
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    nome da interface de rede:
+      match:
+        macaddress: "macadress"
+      set-name: local0
+      addresses: [ IP/24 ]
+      nameservers:
+          search: [ dominio ]
+          addresses:
+              - "ip de broadcast"
+
+      routes:
+        - to: default
+          via: ip de broadcast
+```
+**Segundo Passo**
+```
+cd /etc/network
+mkdir interfaces.d
+cd interfaces.d
+```
+dentro de interfaces.d crie o arquivo:
+```
+nano local0
+```
+com o conteúdo abaixo, isso fará com que deixe de ser dhcp e passe a ser ip fixo. (mude o ip para o ip que você deseja).
+```
+auto local0
+iface local0 inet static
+        address IP/24
+        gateway ip de broadcast
+        dns-search fabricadeideias.com.br
+        dns-nameservers 192.168.109.254
+```
+**Terceiro Passo**
+
+Entre em /etc/network e crie um arquivo chamado interfaces com o conteúdo abaixo
+```
+nano interfaces
+```
+```
+/* The loopback network interface */
+auto lo
+iface lo inet loopback
+
+source /etc/network/interfaces.d/*
+```
+
+**Quarto Passo**
+
+entre em /etc/udev/rules.d/ e crie o arquivo abaixo:
+```
+nano 70-persistent-net.rules
+```
+cole o conteúdo abaixo mudando só o mac address
+```
+SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="macadress", NAME="local0"
+```
+**Quinto Passo (opcional)**
+
+Altere o nome do servidor:
+```
+nano /etc/hostname
+nano /etc/hosts
+```
+
+**Sexto Passo**
+```
+reboot
+```
