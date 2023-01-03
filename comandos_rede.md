@@ -1,4 +1,5 @@
 ### IP Duplicado
+
 > O arp-scan é uma ferramenta de linha de comando que usa o protocolo ARP para descobrir e identificar máquinas IP na rede local. 
 ```
 sudo apt install arp-scan
@@ -14,6 +15,19 @@ sudo arp -s digite o ip duplicado 0
 Desbloquear os IPs
 ```
 sudo arp -s digite o ip duplicado
+```
+
+### Listar IPs Livres e Ocupados com Nmap
+> Nmap é um software de varredura e mapeamento de rede
+
+Lista IPs Livres
+```
+nmap -v -sn -oG - digite o IP/24 | grep 'Down'
+```
+
+Lista IPs Ocupados
+```
+nmap -v -sn -oG - digite o IP/24 | grep 'Up'
 ```
 
 ### Desabilitando client DNS systemd-resolved
