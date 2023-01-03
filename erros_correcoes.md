@@ -1,4 +1,4 @@
-### Problema 01
+## Problema 01
 >E: Release file for http://br.archive.ubuntu.com/ubuntu/dists/jammy-updates/InRelease is not valid yet (invalid for another 2h 8min 19s). Updates for this repository will not be applied
 
 **Solução**:
@@ -10,7 +10,7 @@ Se persistir o erro, repita os comandos acima e troque os endereços em:
 ```
 /etc/apt/sources.list
 ```
-### Problema 02
+## Problema 02
 >W: Tried to start delayed item http://in.archive.ubuntu.com/ubuntu focal-security i386 Contents (deb), but failed
 Err:1 https://download.docker.com/linux/ubuntu jammy InRelease
 Splitting up /var/lib/apt/lists/download.docker.com_linux_ubuntu_dists_jammy_InRelease into data and signature failed
@@ -20,7 +20,7 @@ Splitting up /var/lib/apt/lists/download.docker.com_linux_ubuntu_dists_jammy_InR
 No ambiente gráfico selecione o app:
 - Software & Updates: Desative todos os ppa e as atualizações, procure e selecione o melhor servidor. Atualize.
 
-### Problema 03
+## Problema 03
 >W: http://ppa.launchpad.net/ondrej/php/ubuntu/dists/jammy/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
 
 **Solução**:
@@ -42,7 +42,7 @@ em seguida atualize:
 ```
 apt update e apt upgrade
 ```
-<h3>Problema 04 </h3>
+## Problema 04
 
 >usuario tal não está no arquivo sudoers. Este incidente será relatado.
 
@@ -58,7 +58,7 @@ coloque as linhas abaixo:
 ```
 dessa forma caso o sistema operacional atualize ele não vai perder as configurações de ldap, sudo etc.
 
-<h3>Problema 05 </h3>
+## Problema 05
 
 >you are in emergency mode after logging in type journalctl -xb
 
@@ -72,7 +72,7 @@ blkid
 e2fsck -yfr /dev/mapper/particao desejada
 reboot
 ```
-<h3>Problema 06 </h3>
+## Problema 06
 
 > Problemas ao reproduzir som
 
@@ -110,8 +110,66 @@ Adicione a seguinte linha ao final deste arquivo:
 options snd-hda-intel dmic_detect=0
 ```
 
+## Problema 07
 
+> Problema de autenticação no github
 
+>remote: Support for password authentication was removed on August 13, 2021.
 
+>remote: Please see https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls for information on currently recommended modes of authentication.
 
+>fatal: Authentication failed for ' https://github.com/
 
+**Solução**:
+```
+ssh-keygen -t ed25519 -C "seu e-mail do github"
+ls -al ~/.ssh
+exec ssh-agent bash
+cat ~/.ssh/id_ed25519.pub
+```
+Copie a chave pública que estará abaixo do último comando e entre na url da sua conta no github e vá em:
+
+```
+settings ---> ssh and gpg keys ---> new ssh key = e cole a chave
+```
+
+em seguida vá em:
+
+```
+settings ---> Developer Settings ---> Tokens Classic ---> Generate New Token
+```
+Copie esse token e use ele como senha quando for fazer o git push
+
+**Para salvar o Token no seu computador sem digitar novamente**
+
+```
+$ git config --global user.name "your_github_username"
+$ git config --global user.email "your_github_email"
+$ git config -l
+```
+Para testar faça um git push ou git clone
+
+Agora armazene o registro fornecido em seu computador para lembrar o token:
+
+```
+$ git config --global credential.helper cache
+```
+
+Se necessário, a qualquer momento você pode excluir o registro de cache:
+
+```
+$ git config --global --unset credential.helper
+$ git config --system --unset credential.helper
+```
+
+Agora tente puxar com -v para verificar
+
+```
+$ git pull -v
+```
+
+Linux/Debian (Clone da seguinte forma):
+
+```
+git clone https://<tokenhere>@github.com/<user>/<repo>.git
+```
