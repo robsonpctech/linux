@@ -69,3 +69,33 @@ Copia de HD normal windows para HD ssd
 - faça o resize no terminal ou no gpated
 - depois faça a copia
 ```
+
+## Upgrade de Sistema Operacional
+
+verifique a versão do seu S.O
+```
+hostnamectl
+```
+
+atualize e corrija possíveis problemas no seu S.O antes de fazer o upgrade
+```
+apt update -y && apt upgrade -y && apt autoremove -y && apt-get update --fix-missing  -y && apt autoclean -y && dpkg --configure -a && apt --fix-broken install -y && apt -f install -y
+```
+
+cheque se tem atualização disponível
+
+```
+sudo do-release-upgrade --check-dist-upgrade-only -d
+```
+atualize
+```
+sudo do-release-upgrade
+```
+Caso apareça algum erro depois do comando acima, edite o arquivo abaixo e mude a opção para: normal
+em seguida volte a fazer o comando de atualização
+
+```
+nano /etc/update-manager/release-upgrades
+```
+
+
