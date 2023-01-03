@@ -45,3 +45,32 @@ Reinicie o NetworkManager para gerar um novo resolv.conf e assim gerenciar a res
 ```
 sudo systemctl restart network-manager
 ```
+### DHCP para IP Fixo
+> Procedimento para 
+
+entre em cd /etc/network
+e deixe somente esses arquivos abaixo, o que tiver a mais apague.
+```
+if-down.d
+if-post-down.d
+if-pre-up.d
+if-up.d
+```
+entre em cd /etc/netplan
+e deixe somente esses arquivos abaixo, o que tiver a mais apague
+```
+01-network-manager-all.yaml
+```
+o conteudo desse arquivo acima é:
+```
+network:
+  version: 2
+  renderer: NetworkManager
+```
+entre em cd /etc/udev/rules.d
+e deixe somente esses arquivos abaixo, o que tiver a mais apague
+```
+70-snap.firefox.rules
+70-snap.snapd.rules
+```
+
