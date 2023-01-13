@@ -31,6 +31,13 @@ copiando na rede
 rsync -varhzP origem usuario@ip de destino:/destino
 ```
 
+Exemplo prático
+
+```
+rsync --progress -aruv nome do pc::caminho de destino/* .
+```
+
+
 **Legenda**
 ```
 . = significa tudo
