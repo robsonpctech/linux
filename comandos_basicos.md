@@ -28,7 +28,7 @@ rsync -azP origem destino
 copiando na rede
 
 ```
-rsync -varhzP origem fadmin@ip de destino:/destino
+rsync -varhzP origem usuario@ip de destino:/destino
 ```
 
 **Legenda**
