@@ -60,7 +60,7 @@ Reinicie o NetworkManager para gerar um novo resolv.conf e assim gerenciar a res
 sudo systemctl restart network-manager
 ```
 ### DHCP
-> Procedimento para 
+> Procedimento para configurar o dhcp
 
 entre em cd /etc/network
 e deixe somente esses arquivos abaixo, o que tiver a mais apague.
