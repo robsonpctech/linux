@@ -132,8 +132,8 @@ auto local0
 iface local0 inet static
         address IP/24
         gateway ip de broadcast
-        dns-search fabricadeideias.com.br
-        dns-nameservers 192.168.109.254
+        dns-search digite o domínio
+        dns-nameservers digite o ip de broadcast
 ```
 **Terceiro Passo**
 
