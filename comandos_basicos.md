@@ -131,8 +131,17 @@ parted -l | grep '/dev/sd'
 ```
 
 O que cada comando listado faz ?
+Comando: ls -1rt /dev/sd*
 
-Explicarei detalhamente a seguir:
+1 - liste um por linha
+r - reverso
+t - em ordem do mais novo p/ mais velho
+
+Comando: parted -l | grep '/dev/sd'
+manipula partições do disco
+
+parted -l --> lista as partições
+| grep '/dev/sd' --> mostra somente as que tem essa característica no nome entre aspas
 
 
 
