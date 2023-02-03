@@ -130,7 +130,7 @@ ls -1rt /dev/sd*
 parted -l | grep '/dev/sd'
 ```
 
-O que cada comando listado abaixo faz ?
+O que cada comando listado faz ?
 
 Explicarei detalhamente a seguir:
 
