@@ -105,7 +105,7 @@ em seguida volte a fazer o comando de atualização
 nano /etc/update-manager/release-upgrades
 ```
 
-## Montar e Desmontar Pendrive
+## Montar e Desmontar Pendrive / Cartão SD
 > passo a passo simples de montar um pendrive ou cartão SD.
 
 ```
