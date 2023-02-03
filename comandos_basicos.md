@@ -105,4 +105,35 @@ em seguida volte a fazer o comando de atualização
 nano /etc/update-manager/release-upgrades
 ```
 
+## Montar e Desmontar Pendrive
+> passo a passo simples de montar um pendrive ou cartão SD.
+
+```
+mkdir /mnt /SD
+```
+Nessa parte do exemplo abaixo tem escrito vfat que pode ser substituído por ext4 ou qualquer outro formato.
+Assim como sdc1 é partição que também pode ser substituída pela partição do dispositivo.
+
+exemplo:
+
+```
+mount -t vfat /dev/sdc1 /mnt /SD
+mount -t ext4 /dev/sdd3 /mnt /SD
+cd /mnt /SD
+```
+
+Como eu vou saber qual é a partição do meu dispositivo ?
+
+```
+lsblk -f
+ls -1rt /dev/sd*
+parted -l | grep '/dev/sd'
+```
+
+O que cada comando listado abaixo faz ?
+
+Explicarei detalhamente a seguir:
+
+
+
 
