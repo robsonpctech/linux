@@ -141,7 +141,7 @@ Comando: parted -l | grep '/dev/sd'
 manipula partições do disco
 
 parted -l --> lista as partições
-| grep '/dev/sd' --> mostra somente as que tem essa característica no nome entre aspas
+| grep '/dev/sd' --> filtra os dados de interesse que estão entre aspas
 
 
 
