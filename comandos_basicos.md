@@ -1,3 +1,26 @@
+## CP
+> Copia arquivos e diretórios
+```
+cp -r -p -v  caminho de origem caminho de destino
+```
+**Legenda**
+```
+-r = recursivo
+-p = progressivo
+-v = verboso
+```
+
+## MV - usado para mover e para renomear
+Mover
+```
+mv arquivo.txt /home/joaozinho/Documentos
+```
+
+Renomear
+```
+mv nome_antigo.txt nome_novo.txt
+```
+
 ## RSYNC
 > Significa “sincronização remota”, é uma ferramenta de sincronização remota e local. Ele usa um algoritmo que minimiza a quantidade de dados copiados ao mover apenas as porções de arquivos que foram alteradas.
 
@@ -37,7 +60,6 @@ Exemplo prático
 rsync --progress -aruv nome do pc::caminho de destino/* .
 ```
 
-
 **Legenda**
 ```
 . = significa tudo
@@ -57,7 +79,7 @@ scp -rpv caminho de origem nome_do_usuário@digite o caminho do arquivo de desti
 ```
 
 **Legenda**
-```
+``````
 -r = recursivo
 -p = progressivo
 -v = verboso
