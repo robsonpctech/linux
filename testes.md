@@ -14,7 +14,7 @@ dmidecode -t 17
 ```
 Clique asseguir para acesso [avançado](https://www.redhat.com/sysadmin/linux-tools-dmidecode) ao dmidecode. 
 
-### Teste de HD
+### Teste de HD 01
 > Smartmontools (S.M.A.R.T. Monitoring Tools) é um conjunto de programas utilitários (smartctl e smartd) para controlar e monitorar sistemas de armazenamento de computador.
 
 Instalação:
@@ -34,6 +34,22 @@ smartctl -l selftest /dev/sda --(acompanha o status do scanner)
 smartctl -h ------------------- (ajuda de comandos)
 ```
 Clique asseguir para acesso [avançado](https://help.ubuntu.com/community/Smartmontools) ao Smartmontools.
+
+### Teste de HD 02
+>Ensinaremos outras técnicas de listagem e verificação de HD.
+
+Esse comando abaixo é nativo do linux e pode ser visto em detalhes com o comando a segui: man lshw ---> man de manual e lshw de listar hardware.
+```
+lshw -C disk
+inxi -d 
+```
+
+Também é usamos o GSmartControl, que é uma ferramenta de inspeção de hd.
+```
+apt install gsmartcontrol
+```
+Clique asseguir para [Acesso detalhado ao gsmartcontrol](https://diolinux.com.br/sistemas-operacionais/como-testar-saude-do-seu-hd-no-linux.html).
+
 
 ### Teste de Stress do Computador
 > O stress é usado para testar processador, placa-mãe, hd, memória e demais componentes
