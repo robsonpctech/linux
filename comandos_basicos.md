@@ -79,7 +79,7 @@ scp -rpv caminho de origem nome_do_usuário@digite o caminho do arquivo de desti
 ```
 
 **Legenda**
-``````
+```
 -r = recursivo
 -p = progressivo
 -v = verboso
