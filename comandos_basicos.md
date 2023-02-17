@@ -171,5 +171,33 @@ parted -l -----------> lista as partições
 | grep '/dev/sd' ----> filtra os dados de interesse que estão entre aspas
 ```
 
+## SSH pelo pen-drive de boot
+> esses passos facilitam a configuração remota em um ambiente de testes e pré-instalação de sistema operacional
 
+```
+apt-get install openssh-server -y
+passwd root
+senha digite a senha
+```
 
+acesse o arquivo /etc/ssh/sshd_config
+Procura essa linha aqui:
+```
+#PermitRoot Login prohibit-password
+```
+tira o #
+apaga o prohibit-password e coloca yes no lugar
+vai ficar assim
+```
+PermitRootLogin yes
+```
+salva, sai e reinicia o ssh
+```
+/etc/init.d/ssh restart
+```
+
+ao tentar logar faça:
+```
+ssh root@ip da maquina
+senha digite a senha
+```
