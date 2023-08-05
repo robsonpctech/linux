@@ -26,7 +26,7 @@ else
 fi
 ```
 
-Da permissão de execução ao arquivo
+Da permissão de execução ao arquivo.
 
 ```
 chmod +x /usr/local/bin/automacoes/desloga_user_ativ_maisde2h.sh
