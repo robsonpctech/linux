@@ -1,4 +1,4 @@
-## Se a tela estiver bloqueada ele fará o logout do usuário.
+## Se a tela estiver bloqueada ele fará o logout do usuário
 > script que verifica o status da tela bloqueada usando o comando xdg-screensaver e se a tela estiver bloqueada, ele fará o logout do usuário
 
 Cria uma pasta para guardar a automação de deslogar usuário após 2h com a tela de bloqueio ativada.
